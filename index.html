@@ -5,15 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ofertas de Maternidade | Achadinho do Dia</title>
 
-  <!-- Google Fonts — Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <!-- Meta Pixel (Browser — somente PageView) -->
+  <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -35,82 +33,57 @@
 
 <body>
 
+<!-- BARRA FIXA TOPO -->
+<div class="topbar">
+  ⚠️ Vagas abertas hoje para novas mães
+</div>
+
 <header class="container">
   <div class="logo">ACHADINHO <span>DO DIA</span></div>
 </header>
 
 <main>
 
-  <!-- HERO -->
+  <!-- HERO / BLOCO 1 -->
   <section class="hero container">
-    <div class="hero-wrap">
-      <div>
-        <div class="badge">Ofertas especiais para mamães 🤍</div>
-        <h1>Economize em tudo para seu bebê<br>sem perder tempo procurando</h1>
-        <p class="subtitle">
-          Receba diariamente no WhatsApp as melhores ofertas de maternidade:
-          fraldas, roupas, acessórios, enxoval e muito mais.
-        </p>
-        
-        <a class="cta cta--pulse btn-track"
-           href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
-           data-group="maternidade"
-           data-collect-endpoint="/collect"
-           target="_blank" rel="noopener noreferrer">
-          Quero Receber Ofertas Agora
-        </a>
+    <div class="chat-intro">💬 Oi mãe, posso te ajudar rapidinho?</div>
 
-        <div class="proof">✔ Mais de 2.000 mães já recebem nossas ofertas todos os dias</div>
-      </div>
+    <h1>
+      Pare de pagar caro no enxoval do seu bebê
+    </h1>
 
-      <div class="hero-image">
-        <img src="assets/images/img-hero-mae-bebe.webp" alt="Mãe com bebê">
-      </div>
+    <p class="subtitle">
+      Receba ofertas secretas de maternidade direto no seu celular.
+      Promoções reais de fraldas, roupinhas, enxoval e itens essenciais.
+    </p>
+    
+    <a class="cta cta--pulse btn-track main-cta"
+       href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
+       data-group="maternidade"
+       data-collect-endpoint="/collect"
+       target="_blank" rel="noopener noreferrer">
+      Quero Receber Ofertas Agora
+    </a>
+
+    <div class="proof">
+      ✔ Mais de 2.000 mães já recebem nossas ofertas todos os dias
     </div>
   </section>
 
-  <!-- BENEFÍCIOS -->
+  <!-- BLOCO 2 — PRA QUEM É -->
   <section class="section container">
     <div class="highlight">
-      <h2>Por que entrar no grupo?</h2>
+      <h2>Esse grupo é perfeito para:</h2>
       <div class="grid benefits">
-        <div class="card"><div class="icon">💰</div><h3>Economia de Verdade</h3><p>Selecionamos apenas promoções com preço realmente baixo.</p></div>
-        <div class="card"><div class="icon">⏱️</div><h3>Zero Perda de Tempo</h3><p>Você não precisa ficar pesquisando em vários sites.</p></div>
-        <div class="card"><div class="icon">🍼</div><h3>Foco em Maternidade</h3><p>Conteúdo 100% voltado para bebês e mães.</p></div>
-        <div class="card"><div class="icon">📲</div><h3>Direto no WhatsApp</h3><p>Receba tudo no celular de forma rápida e prática.</p></div>
+        <div class="card"><h3>🤰 Gestantes</h3><p>Que estão começando a montar o enxoval.</p></div>
+        <div class="card"><h3>👶 Mães de bebê pequeno</h3><p>Que gastam muito com itens essenciais.</p></div>
+        <div class="card"><h3>💸 Quem quer economizar de verdade</h3><p>Sem perder tempo procurando promoção.</p></div>
+        <div class="card"><h3>📲 Quem ama praticidade</h3><p>Tudo chega pronto direto no WhatsApp.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- PRODUTOS -->
-  <section class="section container">
-    <div class="products-wrap">
-      <div class="product-image">
-        <img src="assets/images/img-produtos-bebe.webp" alt="Produtos de bebê">
-      </div>
-      <div class="product-list">
-        <h2>Você vai encontrar ofertas de:</h2>
-        <ul>
-          <li>Fraldas e lenços umedecidos</li>
-          <li>Roupinhas e bodies</li>
-          <li>Kit berço e enxoval</li>
-          <li>Mamadeiras e acessórios</li>
-          <li>Carrinhos e itens essenciais</li>
-        </ul>
-
-        <a class="cta btn-track"
-           href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
-           data-group="maternidade"
-           data-collect-endpoint="/collect"
-           target="_blank" rel="noopener noreferrer"
-           style="margin-top:18px">
-          Ver Ofertas de Maternidade
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROVA SOCIAL -->
+  <!-- BLOCO 3 — PROVA SOCIAL -->
   <section class="section container">
     <h2 style="text-align:center;margin-top:0">O que as mães estão dizendo</h2>
     <div class="grid testimonials">
@@ -148,10 +121,12 @@
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="cta-block container">
-    <h2>Entre agora e comece a economizar</h2>
-    <p class="subtitle center">É gratuito. Você pode sair quando quiser.</p>
+  <!-- BLOCO 4 — URGÊNCIA -->
+  <section class="section container urgency">
+    <h2>⏳ Importante</h2>
+    <p class="subtitle center">
+      As entradas são liberadas aos poucos para manter o grupo organizado.
+    </p>
 
     <a class="cta btn-track"
        href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
@@ -165,6 +140,16 @@
 </main>
 
 <footer>© 2026 Achadinho do Dia — Todos os direitos reservados</footer>
+
+<!-- BOTÃO FLUTUANTE (sem 'hidden' — visibilidade controlada por classe .show) -->
+<a class="cta floating-cta btn-track"
+   href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
+   data-group="maternidade"
+   data-collect-endpoint="/collect"
+   target="_blank" rel="noopener noreferrer"
+   aria-hidden="true">
+  Entrar no Grupo
+</a>
 
 <!-- LOADING -->
 <div id="loading" class="loading hidden">

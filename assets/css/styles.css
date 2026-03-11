@@ -12,152 +12,103 @@
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
   font-family:'Montserrat', Arial, sans-serif;
   background:var(--bg);
   color:var(--text);
+  -webkit-font-smoothing:antialiased;
 }
 
-img{max-width:100%;display:block}
-
-.container{width:min(1120px,92%);margin:auto}
+/* mobile-first container menor */
+.container{width:min(720px,92%);margin:auto}
 
 /* TIPOGRAFIA */
-h1{font-weight:800}
-h2{font-weight:700}
+h1{font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.15;margin:14px 0 18px}
+h2{font-weight:700;font-size:clamp(20px,4.5vw,26px);margin-bottom:18px}
 .logo{font-weight:800}
-.subtitle{font-weight:400}
-.card h3{font-weight:700}
+.subtitle{font-weight:400;color:var(--muted);margin-bottom:26px;font-size:16px;line-height:1.6}
+.subtitle.center{text-align:center}
 .cta{font-weight:700}
 
-/* HEADER */
+/* BARRA FIXA */
+.topbar{
+  position:fixed;top:0;left:0;right:0;
+  background:var(--accent);color:#000;
+  text-align:center;padding:10px 12px;
+  font-size:13px;font-weight:600;
+  z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+/* HEADER (garante espaço abaixo da topbar) */
+header{padding-top:52px}
 .logo{padding:18px 0}
 .logo span{color:var(--primary)}
 
 /* HERO */
-.hero{padding:48px 0}
-.hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
-
-.badge{
-  background:var(--accent);
-  padding:6px 14px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:600;
-}
-
-h1{
-  font-size:clamp(28px,4vw,44px);
-  margin:16px 0;
-}
-
-.subtitle{color:var(--muted);margin-bottom:28px}
-.subtitle.center{text-align:center}
+.hero{padding:36px 0 10px}
+.chat-intro{display:inline-block;background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;box-shadow:var(--shadow);margin-bottom:14px}
 
 /* BOTÕES */
-.cta{
-  display:inline-block;
-  background:var(--primary);
-  color:#fff;
-  padding:16px 28px;
-  border-radius:999px;
-  text-decoration:none;
-  box-shadow:var(--shadow);
-  transition:.2s;
-}
-.cta:hover{
-  background:var(--primary-dark);
-  transform:translateY(-2px);
-}
-
+.cta{display:inline-block;background:var(--primary);color:#fff;padding:18px 30px;border-radius:999px;text-decoration:none;box-shadow:var(--shadow);transition:.25s ease;font-size:16px}
+.cta:hover{background:var(--primary-dark);transform:translateY(-2px)}
 .cta--pulse{animation:pulse 1.8s ease-in-out infinite}
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.06)}
-  100%{transform:scale(1)}
-}
-
-.proof{margin-top:18px;font-size:14px;color:var(--muted)}
-
-/* IMAGENS */
-.hero-image,.product-image{display:flex;justify-content:center}
-
-.hero-image img,
-.product-image img{
-  width:100%;
-  max-width:340px;
-  height:auto;
-  border-radius:24px;
-  box-shadow:var(--shadow);
-}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.proof{margin-top:16px;font-size:14px;color:var(--muted)}
 
 /* SEÇÕES */
-.section{padding:56px 0}
-
-.highlight{
-  background:#fff;
-  border-radius:var(--radius);
-  padding:36px;
-  box-shadow:var(--shadow);
-}
-
-.grid{display:grid;gap:22px}
-.benefits{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-
-.card{
-  background:#fff;
-  padding:26px;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-}
-
-.products-wrap{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:36px;
-  align-items:center;
-}
-
-.product-list{text-align:left}
-.product-list li{margin:10px 0;color:var(--muted)}
+.section{padding:44px 0}
+.highlight{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:18px}
+.benefits{grid-template-columns:1fr}
+.card{background:#fff;padding:22px;border-radius:var(--radius);box-shadow:var(--shadow)}
 
 /* DEPOIMENTOS */
-.testimonials{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.wa-card{background:var(--wa-bg);padding:18px;border-radius:20px}
-.wa-item{display:flex;gap:12px}
+.testimonials{grid-template-columns:1fr}
+.wa-card{background:var(--wa-bg);padding:16px;border-radius:20px}
+.wa-item{display:flex;gap:12px;align-items:flex-start}
 .wa-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover}
-.wa-bubble{background:#fff;padding:14px;border-radius:16px;box-shadow:var(--shadow)}
+.wa-bubble{background:#fff;padding:14px;border-radius:16px;box-shadow:var(--shadow);font-size:14px;line-height:1.5}
 .wa-name{font-weight:600;display:block;margin-bottom:6px}
 
-/* CTA FINAL */
-.cta-block{text-align:center;padding:64px 0}
+/* URGÊNCIA */
+.urgency{text-align:center}
+
+/* BOTÃO FLUTUANTE (suave) */
+.floating-cta{
+  position:fixed;
+  left:50%;
+  transform:translate(-50%,20px);
+  bottom:18px;
+  z-index:999;
+  padding:14px 22px;
+  font-size:15px;
+  border-radius:999px;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s cubic-bezier(.2,.9,.2,1), transform .35s cubic-bezier(.2,.9,.2,1);
+}
+.floating-cta.show{
+  opacity:1;
+  transform:translate(-50%,0);
+  pointer-events:auto;
+}
 
 /* FOOTER */
-footer{
-  text-align:center;
-  padding:36px 0 48px;
-  color:var(--muted);
-  font-size:12px;
-  opacity:.8;
-}
+footer{text-align:center;padding:36px 0 48px;color:var(--muted);font-size:12px;opacity:.8}
 
 /* LOADING */
-.loading{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.6);
-  display:flex;align-items:center;justify-content:center
-}
-.hidden{display:none}
-.loading-box{background:#fff;padding:24px;border-radius:16px}
+.loading{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:2000}
+.hidden{display:none !important}
+.loading-box{background:#fff;padding:24px;border-radius:16px;font-weight:600}
 
-/* MOBILE */
-@media (max-width:900px){
-  .hero-wrap,.products-wrap{grid-template-columns:1fr}
-  .hero,.product-list,.cta-block{text-align:center}
-  .product-list ul{padding-left:0;list-style-position:inside}
-  .highlight,.card,.wa-card{margin-left:auto;margin-right:auto}
-  .hero{padding:36px 0}
-  .section{padding:44px 0}
+/* DESKTOP: restauramos largura maior e colunas */
+@media (min-width:900px){
+  .container{width:min(1120px,92%);}
+  .benefits{grid-template-columns:repeat(2,1fr)}
+  /* testimonials: tentar 3 colunas em desktop para reproduzir o layout original */
+  .testimonials{grid-template-columns:repeat(3,1fr)}
 }
