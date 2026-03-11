@@ -1,7 +1,8 @@
+// assets/js/main.js
 const WAIT_MS = 1000;
 let locked = false;
 
-/* UTIL */
+/* ================= UTIL (mantido) ================= */
 function generateEventId() {
   if (crypto.randomUUID) return crypto.randomUUID();
   return 'evt_' + Date.now() + '_' + Math.random().toString(36).slice(2);
@@ -32,14 +33,16 @@ async function sendEventThenRedirect(endpoint, payload, url) {
   setTimeout(() => { window.location.href = url; }, WAIT_MS);
 }
 
+/* ================= DOM READY ================= */
 document.addEventListener('DOMContentLoaded', () => {
 
   const buttons = document.querySelectorAll('.btn-track');
   const loadingOverlay = document.getElementById('loading');
 
+  // garante que o overlay comece escondido
   if (loadingOverlay) loadingOverlay.classList.add('hidden');
 
-  /* TRACKING */
+  /* =============== TRACKING (igual ao original) =============== */
   buttons.forEach(btn => {
     btn.addEventListener('click', ev => {
       ev.preventDefault();
@@ -79,36 +82,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* FLOATING CTA — suave e robusto */
-  const mainCTA = document.querySelector('.main-cta');
-  const finalCTA = document.querySelector('.urgency .cta');
-  const floatingCTA = document.querySelector('.floating-cta');
+  /* =============== FLOATING CTA — robusto e suave =============== */
 
-  if (!floatingCTA) return;
+  const mainCTA = document.querySelector('.main-cta');             // botão hero
+  const finalCTA = document.querySelector('.urgency .cta');        // botão no final/urgency
+  const floatingCTA = document.querySelector('.floating-cta');     // botão flutuante
 
-  function elementIsVisible(el){
-    if(!el) return false;
-    const rect = el.getBoundingClientRect();
-    // Considera visível se estiver na área central da viewport (mais robusto que 0px)
-    return rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+  if (!floatingCTA) return; // nada a fazer
+
+  // Set usado para controlar quais alvos foram detectados como "visíveis" pelo IO
+  const visibleTargets = new Set();
+
+  // IntersectionObserver options:
+  // rootMargin com bottom negativo faz com que o elemento seja considerado intersecting
+  // antes de chegar ao fundo da viewport (mais tolerante em mobile).
+  const ioOptions = {
+    root: null,
+    rootMargin: '0px 0px -40% 0px', // considere visível quando entrar na parte superior ~60% da viewport
+    threshold: 0.01
+  };
+
+  function ioCallback(entries) {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if (entry.isIntersecting) visibleTargets.add(el);
+      else visibleTargets.delete(el);
+    });
+    scheduleUpdate(); // programar atualização visual
   }
 
-  function updateFloating(){
-    const mainVisible = elementIsVisible(mainCTA);
-    const finalVisible = elementIsVisible(finalCTA);
+  const observer = new IntersectionObserver(ioCallback, ioOptions);
+  if (mainCTA) observer.observe(mainCTA);
+  if (finalCTA) observer.observe(finalCTA);
 
-    if(mainVisible || finalVisible){
+  // Detecta se o usuário chegou muito perto do fim da página (tipo "scroll bottom")
+  function isNearBottom(pixelsFromBottom = 80) {
+    // usar pageYOffset e body.scrollHeight para ser mais robusto em mobile
+    return (window.pageYOffset + window.innerHeight) >= (document.documentElement.scrollHeight - pixelsFromBottom);
+  }
+
+  // Atualiza visibilidade do floating CTA com regras:
+  // - esconde se mainCTA OU finalCTA estiverem "visíveis" (IO)
+  // - esconde se estiver VERY near bottom
+  // - mostra caso contrário
+  function updateFloating() {
+    if (!floatingCTA) return;
+
+    const anyObservedVisible = visibleTargets.size > 0;
+    const nearBottom = isNearBottom(80); // ajuste fino: 80px do fim
+
+    if (anyObservedVisible || nearBottom) {
+      // esconder suavemente
       floatingCTA.classList.remove('show');
       floatingCTA.setAttribute('aria-hidden', 'true');
     } else {
+      // mostrar suavemente
       floatingCTA.classList.add('show');
       floatingCTA.setAttribute('aria-hidden', 'false');
     }
   }
 
-  // Roda a primeira verificação ligeiramente depois para evitar flicker
-  setTimeout(updateFloating, 80);
+  // Throttle com requestAnimationFrame para scroll/resize — evita execuções pesadas
+  let ticking = false;
+  function scheduleUpdate() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(() => {
+        updateFloating();
+        ticking = false;
+      });
+    }
+  }
 
-  window.addEventListener('scroll', updateFloating, { passive:true });
-  window.addEventListener('resize', updateFloating);
+  // Também ligamos scroll/resize para lidar com mudanças na altura da viewport (browsers mobile)
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+
+  // Roda a primeira vez um pouco depois da pintura pra evitar flicker inicial
+  setTimeout(() => {
+    scheduleUpdate();
+  }, 120);
+
 });
