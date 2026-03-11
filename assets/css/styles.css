@@ -11,9 +11,9 @@
   --wa-bg:#f0f2f5;
 }
 
+/* Reset / base */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-
 body{
   margin:0;
   font-family:'Montserrat', Arial, sans-serif;
@@ -22,18 +22,18 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* mobile-first container menor */
+/* container: mobile-first, largura restaurada em desktop */
 .container{width:min(720px,92%);margin:auto}
 
-/* TIPOGRAFIA */
+/* Tipografia */
 h1{font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.15;margin:14px 0 18px}
 h2{font-weight:700;font-size:clamp(20px,4.5vw,26px);margin-bottom:18px}
 .logo{font-weight:800}
-.subtitle{font-weight:400;color:var(--muted);margin-bottom:26px;font-size:16px;line-height:1.6}
+.subtitle{font-weight:400;color:var(--muted);margin-bottom:18px;font-size:16px;line-height:1.6}
 .subtitle.center{text-align:center}
 .cta{font-weight:700}
 
-/* BARRA FIXA */
+/* Topbar */
 .topbar{
   position:fixed;top:0;left:0;right:0;
   background:var(--accent);color:#000;
@@ -42,54 +42,137 @@ h2{font-weight:700;font-size:clamp(20px,4.5vw,26px);margin-bottom:18px}
   z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-/* HEADER (garante espaço abaixo da topbar) */
+/* Header spacing (espaco para topbar) */
 header{padding-top:52px}
 .logo{padding:18px 0}
 .logo span{color:var(--primary)}
 
-/* HERO */
-.hero{padding:36px 0 10px}
-.chat-intro{display:inline-block;background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;box-shadow:var(--shadow);margin-bottom:14px}
+/* HERO - grid que separa texto e imagem */
+.hero{
+  padding:36px 0 10px;
+  text-align:center; /* garante centralização no mobile */
+}
 
-/* BOTÕES */
-.cta{display:inline-block;background:var(--primary);color:#fff;padding:18px 30px;border-radius:999px;text-decoration:none;box-shadow:var(--shadow);transition:.25s ease;font-size:16px}
-.cta:hover{background:var(--primary-dark);transform:translateY(-2px)}
-.cta--pulse{animation:pulse 1.8s ease-in-out infinite}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
-.proof{margin-top:16px;font-size:14px;color:var(--muted)}
+/* layout responsivo do hero */
+.hero-grid{
+  display:grid;
+  gap:28px;
+  align-items:center;
+}
 
-/* SEÇÕES */
+/* mobile: 1 coluna */
+@media (max-width:899px){
+  .hero-grid{grid-template-columns:1fr;text-align:center;}
+}
+
+/* desktop: texto + imagem lado a lado */
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:1.1fr .9fr;text-align:left;}
+}
+
+/* chat intro badge */
+.chat-intro{
+  display:inline-block;background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;box-shadow:var(--shadow);margin-bottom:14px;
+}
+
+/* HERO IMAGE */
+.hero-image{display:flex;justify-content:center}
+.hero-image img{
+  width:100%;
+  max-width:520px;        /* limita tamanho máximo */
+  height:auto;
+  aspect-ratio:1/1;       /* garante formato quadrado */
+  object-fit:cover;
+  border-radius:22px;
+  box-shadow:0 12px 34px rgba(0,0,0,.12);
+}
+
+/* CTA row: empilha e centraliza tanto prova quanto microcopy */
+.cta-row{
+  display:flex;
+  flex-direction:column;
+  align-items:center;       /* centraliza botão e prova */
+  gap:10px;
+  text-align:center;
+  margin-top:6px;
+}
+
+/* prova numérica inline (logo abaixo do CTA) */
+.inline-proof{
+  color:var(--muted);
+  font-size:14px;
+  text-align:center;
+  max-width:420px;
+}
+
+/* microcopy abaixo do CTA, também centralizada e mesma largura máxima */
+.microcopy{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:13px;
+  text-align:center;
+  max-width:420px;
+}
+
+/* Ensure hero microcopy/block is centered in all breakpoints (fix for desktop left-align) */
+.hero .inline-proof,
+.hero .microcopy{
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  max-width:420px;
+}
+
+/* Buttons */
+.cta{
+  display:inline-block;background:var(--primary);color:#fff;
+  padding:16px 28px;border-radius:999px;text-decoration:none;
+  box-shadow:var(--shadow);transition:transform .22s ease, box-shadow .22s ease, opacity .22s ease;
+  font-size:16px;
+}
+.cta:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+
+/* subtle pulse for main CTA (leve) */
+.main-cta{animation:subtlePulse 2.2s ease-in-out infinite}
+@keyframes subtlePulse{
+  0%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-2px) scale(1.02)}
+  100%{transform:translateY(0) scale(1)}
+}
+
+/* Sections & cards */
 .section{padding:44px 0}
-.highlight{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+.highlight{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
 .grid{display:grid;gap:18px}
 .benefits{grid-template-columns:1fr}
-.card{background:#fff;padding:22px;border-radius:var(--radius);box-shadow:var(--shadow)}
+.card{background:#fff;padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
 
-/* DEPOIMENTOS */
-.testimonials{grid-template-columns:1fr}
-.wa-card{background:var(--wa-bg);padding:16px;border-radius:20px}
+/* Testimonials */
+.testimonials{grid-template-columns:1fr;gap:14px;margin-top:18px}
+.wa-card{background:var(--wa-bg);padding:14px;border-radius:18px}
 .wa-item{display:flex;gap:12px;align-items:flex-start}
 .wa-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover}
-.wa-bubble{background:#fff;padding:14px;border-radius:16px;box-shadow:var(--shadow);font-size:14px;line-height:1.5}
+.wa-bubble{background:#fff;padding:12px;border-radius:14px;box-shadow:var(--shadow);font-size:14px;line-height:1.5}
 .wa-name{font-weight:600;display:block;margin-bottom:6px}
 
-/* URGÊNCIA */
+/* Urgency block */
 .urgency{text-align:center}
 
-/* BOTÃO FLUTUANTE (suave) */
+/* Floating CTA (suave) */
 .floating-cta{
   position:fixed;
   left:50%;
   transform:translate(-50%,20px);
   bottom:18px;
   z-index:999;
-  padding:14px 22px;
+  padding:12px 20px;
   font-size:15px;
   border-radius:999px;
   box-shadow:0 12px 30px rgba(0,0,0,.18);
   opacity:0;
   pointer-events:none;
-  transition:opacity .35s cubic-bezier(.2,.9,.2,1), transform .35s cubic-bezier(.2,.9,.2,1);
+  transition:opacity .38s cubic-bezier(.2,.9,.2,1), transform .38s cubic-bezier(.2,.9,.2,1);
 }
 .floating-cta.show{
   opacity:1;
@@ -97,18 +180,42 @@ header{padding-top:52px}
   pointer-events:auto;
 }
 
-/* FOOTER */
-footer{text-align:center;padding:36px 0 48px;color:var(--muted);font-size:12px;opacity:.8}
-
-/* LOADING */
-.loading{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:2000}
+/* Loading overlay (protegido) */
 .hidden{display:none !important}
-.loading-box{background:#fff;padding:24px;border-radius:16px;font-weight:600}
+.loading{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+.loading-box{
+  background:#fff;
+  padding:22px 26px;
+  border-radius:14px;
+  font-weight:600;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
 
-/* DESKTOP: restauramos largura maior e colunas */
+/* Footer */
+.footer{
+  text-align:center;
+  padding:40px 0 60px;
+  color:var(--muted);
+  font-size:12px;
+  opacity:.8;
+}
+
+/* Responsive: small screens stack CTA row vertically */
+@media (max-width:520px){
+  .cta-row{align-items:center}
+}
+
+/* Desktop adjustments (restaurar largura e colunas) */
 @media (min-width:900px){
   .container{width:min(1120px,92%);}
   .benefits{grid-template-columns:repeat(2,1fr)}
-  /* testimonials: tentar 3 colunas em desktop para reproduzir o layout original */
   .testimonials{grid-template-columns:repeat(3,1fr)}
 }

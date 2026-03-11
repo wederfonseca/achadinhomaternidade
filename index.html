@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ofertas de Maternidade | Achadinho do Dia</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <!-- Meta Pixel -->
+  <!-- Meta Pixel (mantido) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -30,133 +32,154 @@
       src="https://www.facebook.com/tr?id=893195646887701&ev=PageView&noscript=1"/>
   </noscript>
 </head>
-
 <body>
 
-<!-- BARRA FIXA TOPO -->
-<div class="topbar">
-  ⚠️ Vagas abertas hoje para novas mães
-</div>
+  <!-- Topbar de urgência -->
+  <div class="topbar" role="status">⚠️ Vagas abertas hoje para novas mães</div>
 
-<header class="container">
-  <div class="logo">ACHADINHO <span>DO DIA</span></div>
-</header>
+  <header class="container">
+    <div class="logo">ACHADINHO <span>DO DIA</span></div>
+  </header>
 
-<main>
+  <main>
 
-  <!-- HERO / BLOCO 1 -->
-  <section class="hero container">
-    <div class="chat-intro">💬 Oi mãe, posso te ajudar rapidinho?</div>
+    <!-- HERO / BLOCO 1 -->
+        <section class="hero container" aria-labelledby="hero-title">
 
-    <h1>
-      Pare de pagar caro no enxoval do seu bebê
-    </h1>
+      <div class="hero-grid">
 
-    <p class="subtitle">
-      Receba ofertas secretas de maternidade direto no seu celular.
-      Promoções reais de fraldas, roupinhas, enxoval e itens essenciais.
-    </p>
-    
-    <a class="cta cta--pulse btn-track main-cta"
-       href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
-       data-group="maternidade"
-       data-collect-endpoint="/collect"
-       target="_blank" rel="noopener noreferrer">
-      Quero Receber Ofertas Agora
-    </a>
+        <!-- TEXTO -->
+        <div class="hero-content">
+          <div class="chat-intro">💬 Oi mãe, posso te ajudar rapidinho?</div>
 
-    <div class="proof">
-      ✔ Mais de 2.000 mães já recebem nossas ofertas todos os dias
-    </div>
-  </section>
+          <h1 id="hero-title">
+            Pare de pagar caro no enxoval do seu bebê
+          </h1>
 
-  <!-- BLOCO 2 — PRA QUEM É -->
-  <section class="section container">
-    <div class="highlight">
-      <h2>Esse grupo é perfeito para:</h2>
-      <div class="grid benefits">
-        <div class="card"><h3>🤰 Gestantes</h3><p>Que estão começando a montar o enxoval.</p></div>
-        <div class="card"><h3>👶 Mães de bebê pequeno</h3><p>Que gastam muito com itens essenciais.</p></div>
-        <div class="card"><h3>💸 Quem quer economizar de verdade</h3><p>Sem perder tempo procurando promoção.</p></div>
-        <div class="card"><h3>📲 Quem ama praticidade</h3><p>Tudo chega pronto direto no WhatsApp.</p></div>
-      </div>
-    </div>
-  </section>
+          <p class="subtitle">
+            Cupons e ofertas reais que reduzem o preço do enxoval — enviados direto no WhatsApp.
+            Promoções que somem em minutos, selecionadas diariamente por nós.
+          </p>
 
-  <!-- BLOCO 3 — PROVA SOCIAL -->
-  <section class="section container">
-    <h2 style="text-align:center;margin-top:0">O que as mães estão dizendo</h2>
-    <div class="grid testimonials">
+          <div class="cta-row">
+            <a class="cta main-cta btn-track"
+               href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
+               data-group="maternidade"
+               data-collect-endpoint="/collect"
+               target="_blank" rel="noopener noreferrer">
+              Quero Receber Ofertas Agora
+            </a>
 
-      <div class="wa-card">
-        <div class="wa-item">
-          <img class="wa-avatar" src="assets/images/img-perfil-mae-01.webp" alt="Foto perfil Juliana" />
-          <div class="wa-bubble">
-            <span class="wa-name">Juliana M.</span>
-            Entrei por curiosidade e já economizei muito no enxoval.
+            <div class="inline-proof">✔ +3.842 mães já economizam com a gente</div>
           </div>
+
+          <div class="microcopy">É grátis • Sem spam • Pode sair quando quiser</div>
+        </div>
+
+        <!-- IMAGEM -->
+        <div class="hero-image">
+          <img
+            src="assets/images/enxoval-bebe-organizado-gaveta.webp"
+            alt="Gaveta organizada com itens essenciais de enxoval de bebê"
+            loading="lazy"
+            width="600"
+            height="600"
+          />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BLOCO 2 — PRA QUEM É -->
+    <section class="section container">
+      <div class="highlight">
+        <h2>Esse grupo é perfeito para:</h2>
+        <div class="grid benefits">
+          <div class="card"><h3>🤰 Gestantes</h3><p>Que estão começando a montar o enxoval.</p></div>
+          <div class="card"><h3>👶 Mães de bebê pequeno</h3><p>Que gastam muito com itens essenciais.</p></div>
+          <div class="card"><h3>💸 Quem quer economizar</h3><p>Sem perder tempo pesquisando.</p></div>
+          <div class="card"><h3>📲 Quem prefere praticidade</h3><p>Tudo direto no WhatsApp.</p></div>
         </div>
       </div>
+    </section>
 
-      <div class="wa-card">
-        <div class="wa-item">
-          <img class="wa-avatar" src="assets/images/img-perfil-mae-02.webp" alt="Foto perfil Patrícia" />
-          <div class="wa-bubble">
-            <span class="wa-name">Patrícia R.</span>
-            As promoções chegam rápido e são muito boas.
+    <!-- BLOCO 3 — PROVA SOCIAL -->
+    <section class="section container">
+      <h2 style="text-align:center;margin-top:0">O que as mães estão dizendo</h2>
+
+      <div class="grid testimonials">
+
+        <div class="wa-card">
+          <div class="wa-item">
+            <img class="wa-avatar" src="assets/images/img-perfil-mae-01.webp" alt="Foto perfil Juliana" />
+            <div class="wa-bubble">
+              <span class="wa-name">Juliana M.</span>
+              Consegui 50% OFF nas fraldas que eu já uso.
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="wa-card">
-        <div class="wa-item">
-          <img class="wa-avatar" src="assets/images/img-perfil-mae-03.webp" alt="Foto perfil Camila" />
-          <div class="wa-bubble">
-            <span class="wa-name">Camila S.</span>
-            Melhor grupo de ofertas para quem tem bebê pequeno.
+        <div class="wa-card">
+          <div class="wa-item">
+            <img class="wa-avatar" src="assets/images/img-perfil-mae-02.webp" alt="Foto perfil Patrícia" />
+            <div class="wa-bubble">
+              <span class="wa-name">Patrícia R.</span>
+              As promoções chegam rápido e são muito boas.
+            </div>
           </div>
         </div>
+
+        <div class="wa-card">
+          <div class="wa-item">
+            <img class="wa-avatar" src="assets/images/img-perfil-mae-03.webp" alt="Foto perfil Camila" />
+            <div class="wa-bubble">
+              <span class="wa-name">Camila S.</span>
+              Melhor grupo de ofertas para quem tem bebê pequeno.
+            </div>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- BLOCO 4 — URGÊNCIA (final) -->
+    <section class="section container urgency">
+      <h2>⏳ Importante</h2>
+      <p class="subtitle center">
+        As entradas são liberadas aos poucos para manter o grupo organizado.
+      </p>
 
-  <!-- BLOCO 4 — URGÊNCIA -->
-  <section class="section container urgency">
-    <h2>⏳ Importante</h2>
-    <p class="subtitle center">
-      As entradas são liberadas aos poucos para manter o grupo organizado.
-    </p>
+      <a class="cta final-cta btn-track"
+         href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
+         data-group="maternidade"
+         data-collect-endpoint="/collect"
+         target="_blank" rel="noopener noreferrer">
+        Entrar no Grupo de Maternidade
+      </a>
+    </section>
 
-    <a class="cta btn-track"
-       href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
-       data-group="maternidade"
-       data-collect-endpoint="/collect"
-       target="_blank" rel="noopener noreferrer">
-      Entrar no Grupo de Maternidade
-    </a>
-  </section>
+  </main>
 
-</main>
+  <footer class="footer">
+    © 2026 Achadinho do Dia — Todos os direitos reservados
+  </footer>
 
-<footer>© 2026 Achadinho do Dia — Todos os direitos reservados</footer>
+  <!-- BOTÃO FLUTUANTE (visibilidade controlada em JS via .show) -->
+  <a class="cta floating-cta btn-track"
+     href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
+     data-group="maternidade"
+     data-collect-endpoint="/collect"
+     target="_blank" rel="noopener noreferrer"
+     aria-hidden="true">
+    Entrar no Grupo
+  </a>
 
-<!-- BOTÃO FLUTUANTE (sem 'hidden' — visibilidade controlada por classe .show) -->
-<a class="cta floating-cta btn-track"
-   href="https://chat.whatsapp.com/Ijv75mZwQKzKr7rYWCTRWp"
-   data-group="maternidade"
-   data-collect-endpoint="/collect"
-   target="_blank" rel="noopener noreferrer"
-   aria-hidden="true">
-  Entrar no Grupo
-</a>
+  <!-- LOADING OVERLAY (inicia escondido) -->
+  <div id="loading" class="loading hidden" aria-hidden="true">
+    <div class="loading-box">🔒 Reservando sua vaga no grupo…</div>
+  </div>
 
-<!-- LOADING -->
-<div id="loading" class="loading hidden">
-  <div class="loading-box">🔒 Reservando sua vaga no grupo…</div>
-</div>
-
-<script src="assets/js/main.js" defer></script>
-
+  <!-- JS -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
